@@ -1,0 +1,18 @@
+/*-----Nav Bar for all Pages-----*/
+
+.navbar {
+	padding: 15px 15px;
+	background-color: #89bdd3;
+	font-family: 'Playfair Display', serif;
+}
+
+nav ul li {
+	display: inline;
+	text-decoration: none;
+	font-size: 2em;
+}
+
+.searchBar {
+	float: right;
+	margin-top: 15px;
+}
