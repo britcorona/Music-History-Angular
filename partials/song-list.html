@@ -1,0 +1,30 @@
+<!-- <div class="col-md-8"> -->
+
+<div class="col-md-4 box1">
+
+  <h4>Artist:</h4>
+    <select
+      ng-model="theArtist"
+      ng-options="value.artist for value in songs | filter:theAlbums">
+      <option>--</option>
+    </select>
+
+    <h4>Album:</h4>
+    <select
+      ng-model="theAlbums"
+      ng-options="value.album for value in songs | filter:theArtist">
+      <option>--</option>
+    </select>
+
+</div>
+
+	<div>
+	  <div ng-repeat="song in songs | filter:theArtist | filter:theAlbums | filter:songSearchText">
+	  	<a href="#/songs/{{song.id}}">
+		    <h3>{{song.name | capitalize}}</h3>
+	    </a>
+	    	<button ng-click="killSong(song)">Delete</button>
+	  </div>
+	</div>
+
+<!-- </div> -->

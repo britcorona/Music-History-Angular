@@ -1,0 +1,12 @@
+<div>
+  <div ng-repeat="song in songs | filter:{id:id}">
+
+  	<!-- <a href="#/songs/{{song.id}}"> -->
+
+			Performed by {{song.artist | capitalize}}
+			on the album {{song.album | capitalize}}
+
+		<!-- </a> -->
+
+	</div>
+</div>
