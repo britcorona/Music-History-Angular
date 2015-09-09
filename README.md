@@ -12,7 +12,7 @@ Create a Music application with the ability to add and delete songs, filter, and
 
 The http-server module is just a very basic project that will serve static files from the directory of your choice.
 
-sudo npm install -g http-server
+*sudo npm install -g http-server*
 
 ##### Serve the application
 
@@ -30,4 +30,4 @@ Go to the lib folder and *bower install*
 
 Still in the lib folder *npm install*
 
-Now that everything is installed, make sure **Grunt** is running in the *lib folder* and the **http-server** is running the in applications *root folder*, and view the Music History webpage.
+Now that everything is installed, make sure **Grunt** is running in the *lib folder* and the **http-server** is running in the applications *root folder*, and view the Music History webpage.
