@@ -1,44 +1,33 @@
-app.controller("SongCtrl", 
-  ["$scope",
-   "$q",
-   "song-storage", 
-  function($scope, $q, song_storage) {
+define([
+	'angular',
+	'angularRoute',
+	'firebase'
+], function(angular) {
+	angular.module("SongApp.SongListCtrl", ['ngRoute'])
+		.config(['$routeProvider', function($routeProvider) {
+			$routeProvider
+			.when('/', {
+				templateUrl: 'partials/song-list.html',
+				controller: 'SongList'
+			});
+		}])
+		.controller("SongListCtrl", ["$scope", "$firebaseArray",
+  		function($scope, $firebaseArray) {
 
+		  //This will connect to firebase and get the info
+			  var ref = new Firebase("https://torrid-heat-9915.firebaseio.com/songs");
 
-	//This is on the Add Song Page
-	$scope.newSong = {
-		name: "",
-		artist: "",
-		album: ""
-	};
+			 //  // download the data into a local object
+			  $scope.songs = $firebaseArray(ref);
 
-	//simple_storage.addJunk("garbage", { a: 1, b:2 });
+				// //Delete Button
+				$scope.killSong = function(song) {
+				  var songIndex = $scope.songs.indexOf(song);
+					  if (songIndex >= 0) {
+					    $scope.songs.splice(songIndex, 1);
+					  }
+					$scope.$remove();
+				};
 
-	//Add Song Page
-	$scope.addSong = function() {
-		$scope.songs.push({
-			name: $scope.newSong.name,
-			artist: $scope.newSong.artist, 
-			album: $scope.newSong.album});
-	};
-
-	//Delete Button
-	$scope.killSong = function(song) {
-	  var songIndex = $scope.songs.indexOf(song);
-		  if (songIndex >= 0) {
-		    $scope.songs.splice(songIndex, 1);
-		  }
-	};
-
-
-	song_storage.then(
-    function(promiseResolutionData) {
-      //console.log("promiseResolutionData", promiseResolutionData);
-      $scope.songs = promiseResolutionData;
-    },
-    function(promiseRejectionError) {
-      console.log("error", promiseRejectionError);
-    });
-
-  
-}]);
+	}]);
+});

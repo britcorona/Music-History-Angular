@@ -1,5 +1,3 @@
-<!-- <div class="col-md-8"> -->
-
 <div class="col-md-4 box1">
 
   <h4>Artist:</h4>
@@ -16,15 +14,33 @@
       <option>--</option>
     </select>
 
+    <div>
+      Song name: <input type="text" ng-model="newSong.name">
+    </div>
+
+    <div>
+      Album: <input type="text" ng-model="newSong.album">
+    </div>
+
+    <div>
+      Artist: <input type="text" ng-model="newSong.artist">
+    </div>
+
+    <button ng-click="addSong()">Add Song</button>
+
 </div>
 
+<div class="col-md-8">
 	<div>
 	  <div ng-repeat="song in songs | filter:theArtist | filter:theAlbums | filter:songSearchText">
 	  	<a href="#/songs/{{song.id}}">
 		    <h3>{{song.name | capitalize}}</h3>
 	    </a>
+
+      <!-- <x-music-history-song-brief song="song" max-rating="5"></x-music-history-song-brief> -->
+      
 	    	<button ng-click="killSong(song)">Delete</button>
 	  </div>
 	</div>
 
-<!-- </div> -->
+</div>

@@ -1,21 +1,27 @@
-app.controller("SongDetailCtrl", 
-  ["$scope",
-  "$routeParams",
-   "song-storage",
-   "$q", 
-  function($scope, $routeParams, song_storage, $q) {
+define([
+  'angular',
+  'angularRoute',
+  'firebase'
+], function(angular) {
+    angular.module("SongApp.SongDetailCtrl", ['ngRoute'])
+    .config(['$routeProvider', function($routeProvider) {
+      $routeProvider
+      .when('/songs/:songId', {
+      templateUrl: 'partials/song-detail.html',
+      controller: 'SongDetailC'
+    });
+  }])
+    .controller('SongDetailCtrl', [function() {
 
 	$scope.id = $routeParams.songId;
 
-	//console.log("simple_storage.getJunk(\"garbage\")", simple_storage.getJunk("garbage"));
-
-	song_storage.then(
-    function(promiseResolutionData) {
-
-      $scope.songs = promiseResolutionData;
-    },
-    function(promiseRejectionError) {
-      console.log("error", promiseRejectionError);
-    });
-  
-}]);
+  	song_storage.then(
+      function(promiseResolutionData) {
+        $scope.songs = promiseResolutionData;
+      },
+      function(promiseRejectionError) {
+        console.log("error", promiseRejectionError);
+      });
+    
+    }]);
+});
