@@ -1,11 +1,18 @@
 define([
-	'angular'
-], function(angular) {
-//Since this is a controller must list the ref for firebase everytime
-angular.module("SongApp.SongFormCtrl", 
-  ["$scope",
-   "$firebaseArray",
-  function($scope, $firebaseArray) {
+  'angular',
+  'firebase',
+  'angularRoute'
+], function(angular, firebase, angularRoute) {
+    angular.module("SongApp.SongFormCtrl", ['ngRoute'])
+    .config(['$routeProvider', function($routeProvider) {
+      $routeProvider
+      .when('/songs/:songId', {
+      templateUrl: 'partials/song-detail.html',
+      controller: 'formCtrl',
+      controllerAs: 'SongFormCtrl'
+    });
+  }])
+    .controller('formCtrl', ["$firebaseArray", "$scope", function($firebaseArray, $scope) {
 
   	//This will connect to firebase and get the info
 	  var ref = new Firebase("https://torrid-heat-9915.firebaseio.com/songs");

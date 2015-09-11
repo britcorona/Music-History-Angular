@@ -34,7 +34,7 @@
 	<div>
 	  <div ng-repeat="song in songs | filter:theArtist | filter:theAlbums | filter:songSearchText">
 	  	<a href="#/songs/{{song.id}}">
-		    <h3>{{song.name | capitalize}}</h3>
+		    <h3>{{song.name}}</h3>
 	    </a>
 
       <!-- <x-music-history-song-brief song="song" max-rating="5"></x-music-history-song-brief> -->

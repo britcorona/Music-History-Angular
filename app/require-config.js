@@ -1,3 +1,13 @@
+// require([
+// 	'angular',
+// 	'app'
+// 	], function(angular, app) {
+// 		var $html = angular.element(document.getElementsByTagName('body')[0]);
+// 		angular.element($html).ready(function() {
+// 			// bootstrap the app manually
+// 			angular.bootstrap(document, ['SongApp']);
+// 		});
+// 	});
 
 require.config({
 	paths: {
@@ -9,6 +19,7 @@ require.config({
 		bootstrap: "../lib/bower_components/bootstrap/dist/js/bootstrap.min"
 	},
   shim: {
+  	'angularFire': ['angular', 'firebase'],
 		'angular' : {'exports' : 'angular'},
 		'bootstrap': ['jquery'],
 		'angularRoute': ['angular']

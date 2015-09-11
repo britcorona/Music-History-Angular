@@ -1,17 +1,18 @@
 define([
   'angular',
-  'angularRoute',
-  'firebase'
-], function(angular) {
+  'firebase',
+  'angularRoute'
+], function(angular, firebase, angularRoute) {
     angular.module("SongApp.SongDetailCtrl", ['ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
       $routeProvider
       .when('/songs/:songId', {
       templateUrl: 'partials/song-detail.html',
-      controller: 'SongDetailC'
+      controller: 'detailCtrl',
+      controllerAs: 'SongDetailCtrl'
     });
   }])
-    .controller('SongDetailCtrl', [function() {
+    .controller('detailCtrl', [function() {
 
 	$scope.id = $routeParams.songId;
 
